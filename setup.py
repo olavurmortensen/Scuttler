@@ -5,7 +5,7 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-    INSTALL_REQUIRES = []
+    INSTALL_REQUIRES = [pytest >= 8.2.1]
 
     setuptools.setup(
             name="Scuttler",
