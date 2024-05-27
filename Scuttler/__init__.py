@@ -1,1 +1,1 @@
-from Scuttler import control, test
+from Scuttler import control
