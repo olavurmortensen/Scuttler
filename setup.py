@@ -5,7 +5,8 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-    INSTALL_REQUIRES = ['pytest >= 8.2.1']
+    INSTALL_REQUIRES = ['pytest >= 8.2.1',
+            'adafruit-circuitpython-pca9685 >= 3.4.15']
 
     setuptools.setup(
             name="Scuttler",
