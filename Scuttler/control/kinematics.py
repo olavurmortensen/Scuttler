@@ -19,15 +19,13 @@ def deg2rad(deg):
     return deg * pi / 180
 
 def forwardKinematics(q1_deg, q2_deg):
-    throwIfOutOfRange(q1_deg)
-    throwIfOutOfRange(q2_deg)
     reach = L1 + cos(deg2rad(q2_deg)) * L2
     x = cos(deg2rad(q1_deg)) * reach
     y = sin(deg2rad(q1_deg)) * reach
-    z = sin(deg2rad(q2_deg)) * L2
+    z = - sin(deg2rad(q2_deg)) * L2
     return (x, y, z)
 
 def inverseKinematics(x, y, z):
     q1_deg = rad2deg(atan2(y, x))
-    q2_deg = rad2deg(atan2(z, sqrt(x**2 + y**2) - L1))
+    q2_deg = rad2deg(atan2(-z, sqrt(x**2 + y**2) - L1))
     return (q1_deg, q2_deg)

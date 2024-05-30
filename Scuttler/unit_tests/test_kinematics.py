@@ -9,12 +9,6 @@ def test_forwardKinematicsReturnsValues():
     assert y is not None
     assert z is not None
 
-def test_throwOnAnglesOutOfRange():
-    with pytest.raises(ValueError):
-        (x, y, z) = kinematics.forwardKinematics(-1.0, 0)
-    with pytest.raises(ValueError):
-        (x, y, z) = kinematics.forwardKinematics(0, -1.0)
-
 def test_inverseKinematicsReturnsValues():
     (q1, q2) = kinematics.inverseKinematics(0, 0, 0)
     assert q1 is not None
@@ -26,3 +20,4 @@ def test_inverseAndForwardKinematicsCompatible():
     (x, y, z) = kinematics.forwardKinematics(q1_expected, q2_expected);
     (q1_result, q2_result) = kinematics.inverseKinematics(x, y, z)
     assert pytest.approx(q1_result, 1e-10) == q1_expected
+    assert pytest.approx(q2_result, 1e-10) == q2_expected
