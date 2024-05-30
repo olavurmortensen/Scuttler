@@ -18,7 +18,7 @@ def rad2deg(rad):
 def deg2rad(deg):
     return deg * pi / 180
 
-def fk_left(q1_deg, q2_deg):
+def forwardKinematics(q1_deg, q2_deg):
     throwIfOutOfRange(q1_deg)
     throwIfOutOfRange(q2_deg)
     reach = L1 + cos(deg2rad(q2_deg)) * L2
@@ -27,21 +27,7 @@ def fk_left(q1_deg, q2_deg):
     z = sin(deg2rad(q2_deg)) * L2
     return (x, y, z)
 
-def fk_right(q1_deg, q2_deg):
-    throwIfOutOfRange(q1_deg)
-    throwIfOutOfRange(q2_deg)
-    reach = L1 + sin(deg2rad(q2_deg)) * L2
-    x = sin(deg2rad(q1_deg)) * reach
-    y = cos(deg2rad(q1_deg)) * reach
-    z = cos(deg2rad(q2_deg)) * L2
-    return (x, y, z)
-
-def ik_left(x, y, z):
+def inverseKinematics(x, y, z):
     q1_deg = rad2deg(atan2(y, x))
     q2_deg = rad2deg(atan2(z, sqrt(x**2 + y**2) - L1))
-    return (q1_deg, q2_deg)
-
-def ik_right(x, y, z):
-    q1_deg = rad2deg(atan2(x, y))
-    q2_deg = rad2deg(atan2(sqrt(x**2 + y**2) - L1, z))
     return (q1_deg, q2_deg)
